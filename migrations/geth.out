@@ -1,0 +1,210 @@
+WARN [10-20|14:13:27] No etherbase set and no accounts found as default 
+INFO [10-20|14:13:27] Starting peer-to-peer node               instance=Geth/v1.7.2-stable-1db4ecdc/windows-amd64/go1.9
+INFO [10-20|14:13:27] Allocated cache and file handles         database=C:\\Users\\Administrator\\AppData\\Roaming\\Ethereum\\rinkeby\\geth\\chaindata cache=128 handles=1024
+INFO [10-20|14:13:28] Initialised chain configuration          config="{ChainID: 4 Homestead: 1 DAO: <nil> DAOSupport: true EIP150: 2 EIP155: 3 EIP158: 3 Byzantium: 1035301 Engine: clique}"
+INFO [10-20|14:13:28] Initialising Ethereum protocol           versions="[63 62]" network=4
+INFO [10-20|14:13:28] Loaded most recent local header          number=1096108 hash=0ef50e…45c040 td=2127987
+INFO [10-20|14:13:28] Loaded most recent local full block      number=0       hash=6341fd…67e177 td=1
+INFO [10-20|14:13:28] Loaded most recent local fast block      number=1096108 hash=0ef50e…45c040 td=2127987
+INFO [10-20|14:13:28] Loaded local transaction journal         transactions=0 dropped=0
+INFO [10-20|14:13:28] Regenerated local transaction journal    transactions=0 accounts=0
+INFO [10-20|14:13:28] Starting P2P networking 
+INFO [10-20|14:13:30] UDP listener up                          self=enode://8fd36f80d289e394744de8501e9243888de669ae695097b18ee7a4c600cb40af6de49c3a3ef6be56d0e3e3d20ffb9de37bd6f3ea9718036daa8811fe7a9b4561@0.0.0.0:30303
+INFO [10-20|14:13:30] RLPx listener up                         self=enode://8fd36f80d289e394744de8501e9243888de669ae695097b18ee7a4c600cb40af6de49c3a3ef6be56d0e3e3d20ffb9de37bd6f3ea9718036daa8811fe7a9b4561@0.0.0.0:30303
+INFO [10-20|14:13:30] IPC endpoint opened: \\.\pipe\geth.ipc 
+INFO [10-20|14:13:30] HTTP endpoint opened: http://127.0.0.1:8545 
+WARN [10-20|14:14:33] No etherbase set and no accounts found as default 
+INFO [10-20|14:14:33] Starting peer-to-peer node               instance=Geth/v1.7.2-stable-1db4ecdc/windows-amd64/go1.9
+INFO [10-20|14:14:33] Allocated cache and file handles         database=C:\\Users\\Administrator\\AppData\\Roaming\\Ethereum\\rinkeby\\geth\\chaindata cache=128 handles=1024
+INFO [10-20|14:14:33] Initialised chain configuration          config="{ChainID: 4 Homestead: 1 DAO: <nil> DAOSupport: true EIP150: 2 EIP155: 3 EIP158: 3 Byzantium: 1035301 Engine: clique}"
+INFO [10-20|14:14:33] Initialising Ethereum protocol           versions="[63 62]" network=4
+INFO [10-20|14:14:33] Loaded most recent local header          number=1096108 hash=0ef50e…45c040 td=2127987
+INFO [10-20|14:14:33] Loaded most recent local full block      number=0       hash=6341fd…67e177 td=1
+INFO [10-20|14:14:33] Loaded most recent local fast block      number=1096108 hash=0ef50e…45c040 td=2127987
+INFO [10-20|14:14:33] Loaded local transaction journal         transactions=0 dropped=0
+INFO [10-20|14:14:33] Regenerated local transaction journal    transactions=0 accounts=0
+INFO [10-20|14:14:33] Starting P2P networking 
+INFO [10-20|14:14:36] UDP listener up                          self=enode://8fd36f80d289e394744de8501e9243888de669ae695097b18ee7a4c600cb40af6de49c3a3ef6be56d0e3e3d20ffb9de37bd6f3ea9718036daa8811fe7a9b4561@0.0.0.0:30303
+INFO [10-20|14:14:36] RLPx listener up                         self=enode://8fd36f80d289e394744de8501e9243888de669ae695097b18ee7a4c600cb40af6de49c3a3ef6be56d0e3e3d20ffb9de37bd6f3ea9718036daa8811fe7a9b4561@0.0.0.0:30303
+INFO [10-20|14:14:36] IPC endpoint opened: \\.\pipe\geth.ipc 
+INFO [10-20|14:14:36] HTTP endpoint opened: http://127.0.0.1:8545 
+WARN [10-20|14:15:19] No etherbase set and no accounts found as default 
+INFO [10-20|14:15:19] Starting peer-to-peer node               instance=Geth/v1.7.2-stable-1db4ecdc/windows-amd64/go1.9
+INFO [10-20|14:15:19] Allocated cache and file handles         database=C:\\Users\\Administrator\\AppData\\Roaming\\Ethereum\\rinkeby\\geth\\chaindata cache=128 handles=1024
+INFO [10-20|14:15:19] Initialised chain configuration          config="{ChainID: 4 Homestead: 1 DAO: <nil> DAOSupport: true EIP150: 2 EIP155: 3 EIP158: 3 Byzantium: 1035301 Engine: clique}"
+INFO [10-20|14:15:19] Initialising Ethereum protocol           versions="[63 62]" network=4
+INFO [10-20|14:15:19] Loaded most recent local header          number=1096108 hash=0ef50e…45c040 td=2127987
+INFO [10-20|14:15:19] Loaded most recent local full block      number=0       hash=6341fd…67e177 td=1
+INFO [10-20|14:15:19] Loaded most recent local fast block      number=1096108 hash=0ef50e…45c040 td=2127987
+INFO [10-20|14:15:19] Loaded local transaction journal         transactions=0 dropped=0
+INFO [10-20|14:15:19] Regenerated local transaction journal    transactions=0 accounts=0
+INFO [10-20|14:15:19] Starting P2P networking 
+INFO [10-20|14:15:22] UDP listener up                          self=enode://8fd36f80d289e394744de8501e9243888de669ae695097b18ee7a4c600cb40af6de49c3a3ef6be56d0e3e3d20ffb9de37bd6f3ea9718036daa8811fe7a9b4561@0.0.0.0:30303
+INFO [10-20|14:15:22] RLPx listener up                         self=enode://8fd36f80d289e394744de8501e9243888de669ae695097b18ee7a4c600cb40af6de49c3a3ef6be56d0e3e3d20ffb9de37bd6f3ea9718036daa8811fe7a9b4561@0.0.0.0:30303
+INFO [10-20|14:15:22] IPC endpoint opened: \\.\pipe\geth.ipc 
+INFO [10-20|14:15:22] HTTP endpoint opened: http://127.0.0.1:8545 
+INFO [10-20|14:15:52] Block synchronisation started 
+WARN [10-20|14:15:55] Rolled back headers                      count=186 header=1096108->1096108 fast=1096108->1096108 block=0->0
+WARN [10-20|14:15:55] Fast-sync pivot locked in                number=1096166 hash=d1d5e4…10a50a
+WARN [10-20|14:15:55] Synchronisation failed, dropping peer    peer=a24ac7c5484ef4ed err="retrieved hash chain is invalid"
+WARN [10-20|14:16:07] Rolled back headers                      count=187 header=1096108->1096108 fast=1096108->1096108 block=0->0
+WARN [10-20|14:16:07] Synchronisation failed, dropping peer    peer=343149e4feefa15d err="retrieved hash chain is invalid"
+WARN [10-20|14:16:24] Rolled back headers                      count=188 header=1096108->1096108 fast=1096108->1096108 block=0->0
+WARN [10-20|14:16:24] Synchronisation failed, dropping peer    peer=a24ac7c5484ef4ed err="retrieved hash chain is invalid"
+WARN [10-20|14:16:35] Rolled back headers                      count=189 header=1096108->1096108 fast=1096108->1096108 block=0->0
+WARN [10-20|14:16:35] Synchronisation failed, dropping peer    peer=343149e4feefa15d err="retrieved hash chain is invalid"
+WARN [10-20|14:16:55] Rolled back headers                      count=190 header=1096108->1096108 fast=1096108->1096108 block=0->0
+WARN [10-20|14:16:55] Synchronisation failed, dropping peer    peer=343149e4feefa15d err="retrieved hash chain is invalid"
+WARN [10-20|14:17:05] Rolled back headers                      count=191 header=1096108->1096108 fast=1096108->1096108 block=0->0
+WARN [10-20|14:17:05] Synchronisation failed, dropping peer    peer=a24ac7c5484ef4ed err="retrieved hash chain is invalid"
+INFO [10-20|14:17:24] Imported new block headers               count=28  elapsed=21.001ms number=1096300 hash=f0a72f…8dec62 ignored=164
+INFO [10-20|14:17:25] Imported new block receipts              count=4   elapsed=0s       bytes=5885 number=1096112 hash=14d0ff…d0084b ignored=0
+WARN [10-20|14:17:25] Rolled back headers                      count=28  header=1096300->1096272 fast=1096112->1096112 block=0->0
+WARN [10-20|14:17:25] Synchronisation failed, dropping peer    peer=343149e4feefa15d err="retrieved hash chain is invalid"
+WARN [10-20|14:17:37] Rolled back headers                      count=189 header=1096272->1096112 fast=1096112->1096112 block=0->0
+WARN [10-20|14:17:37] Synchronisation failed, dropping peer    peer=a24ac7c5484ef4ed err="retrieved hash chain is invalid"
+WARN [10-20|14:17:55] Rolled back headers                      count=190 header=1096112->1096112 fast=1096112->1096112 block=0->0
+WARN [10-20|14:17:55] Synchronisation failed, dropping peer    peer=343149e4feefa15d err="retrieved hash chain is invalid"
+INFO [10-20|14:17:59] Transaction pool price threshold updated price=18000000000
+INFO [10-20|14:17:59] Starting mining operation 
+INFO [10-20|14:17:59] Commit new mining work                   number=1       txs=0 uncles=0 elapsed=12.000ms
+WARN [10-20|14:17:59] Block sealing failed                     err=unauthorized
+WARN [10-20|14:18:05] Rolled back headers                      count=191 header=1096112->1096112 fast=1096112->1096112 block=0->0
+WARN [10-20|14:18:05] Synchronisation failed, dropping peer    peer=a24ac7c5484ef4ed err="retrieved hash chain is invalid"
+INFO [10-20|14:18:35] Imported new block headers               count=4   elapsed=15.000ms number=1096304 hash=67e5d2…1086d1 ignored=188
+INFO [10-20|14:18:36] Imported new block receipts              count=6   elapsed=1.000ms  bytes=8408 number=1096118 hash=5cfd9f…b76e62 ignored=0
+WARN [10-20|14:18:37] Rolled back headers                      count=5   header=1096304->1096300 fast=1096118->1096118 block=0->0
+INFO [10-20|14:18:38] Imported new state entries               count=373 elapsed=0s       processed=373 pending=647 retry=0 duplicate=0 unexpected=0
+WARN [10-20|14:18:38] Synchronisation failed, dropping peer    peer=a24ac7c5484ef4ed err="retrieved hash chain is invalid"
+WARN [10-20|14:18:46] Rolled back headers                      count=187 header=1096300->1096118 fast=1096118->1096118 block=0->0
+WARN [10-20|14:18:46] Synchronisation failed, dropping peer    peer=343149e4feefa15d err="retrieved hash chain is invalid"
+WARN [10-20|14:19:04] Rolled back headers                      count=189 header=1096118->1096118 fast=1096118->1096118 block=0->0
+WARN [10-20|14:19:04] Synchronisation failed, dropping peer    peer=343149e4feefa15d err="retrieved hash chain is invalid"
+WARN [10-20|14:19:15] Rolled back headers                      count=189 header=1096118->1096118 fast=1096118->1096118 block=0->0
+WARN [10-20|14:19:15] Synchronisation failed, dropping peer    peer=a24ac7c5484ef4ed err="retrieved hash chain is invalid"
+WARN [10-20|14:19:35] Rolled back headers                      count=191 header=1096118->1096118 fast=1096118->1096118 block=0->0
+WARN [10-20|14:19:35] Synchronisation failed, dropping peer    peer=343149e4feefa15d err="retrieved hash chain is invalid"
+WARN [10-20|14:19:44] Rolled back headers                      count=191 header=1096118->1096118 fast=1096118->1096118 block=0->0
+WARN [10-20|14:19:44] Synchronisation failed, dropping peer    peer=a24ac7c5484ef4ed err="retrieved hash chain is invalid"
+INFO [10-20|14:20:15] Imported new block headers               count=6   elapsed=13.000ms number=1096310 hash=5b28d0…30c50c ignored=186
+INFO [10-20|14:20:15] Imported new state entries               count=216 elapsed=0s       processed=589 pending=455 retry=0 duplicate=0 unexpected=0
+INFO [10-20|14:20:16] Imported new block receipts              count=2   elapsed=0s       bytes=3403 number=1096120 hash=ef7ed9…8591d5 ignored=0
+INFO [10-20|14:20:16] Imported new block receipts              count=2   elapsed=0s       bytes=3189 number=1096122 hash=92b699…db1f66 ignored=0
+WARN [10-20|14:20:17] Rolled back headers                      count=7   header=1096310->1096304 fast=1096122->1096122 block=0->0
+WARN [10-20|14:20:17] Synchronisation failed, dropping peer    peer=a24ac7c5484ef4ed err="retrieved hash chain is invalid"
+WARN [10-20|14:20:24] Rolled back headers                      count=190 header=1096304->1096122 fast=1096122->1096122 block=0->0
+WARN [10-20|14:20:24] Synchronisation failed, dropping peer    peer=343149e4feefa15d err="retrieved hash chain is invalid"
+WARN [10-20|14:20:44] Rolled back headers                      count=191 header=1096122->1096122 fast=1096122->1096122 block=0->0
+WARN [10-20|14:20:44] Synchronisation failed, dropping peer    peer=343149e4feefa15d err="retrieved hash chain is invalid"
+INFO [10-20|14:20:59] Imported new block headers               count=4   elapsed=19.001ms number=1096314 hash=465a3f…68021f ignored=188
+INFO [10-20|14:21:00] Imported new block receipts              count=2   elapsed=1.000ms  bytes=5107 number=1096124 hash=29b7e3…7bb17c ignored=0
+WARN [10-20|14:21:01] Rolled back headers                      count=4   header=1096314->1096310 fast=1096124->1096124 block=0->0
+WARN [10-20|14:21:01] Synchronisation failed, dropping peer    peer=a24ac7c5484ef4ed err="retrieved hash chain is invalid"
+INFO [10-20|14:21:24] Imported new block headers               count=2   elapsed=12.000ms number=1096316 hash=a5d7fa…4819d6 ignored=190
+INFO [10-20|14:21:24] Imported new state entries               count=393 elapsed=0s       processed=982 pending=673 retry=0 duplicate=0 unexpected=0
+INFO [10-20|14:21:25] Imported new block receipts              count=15  elapsed=4.000ms  bytes=57487 number=1096139 hash=892ffc…c37077 ignored=0
+WARN [10-20|14:21:26] Rolled back headers                      count=2   header=1096316->1096314 fast=1096139->1096139 block=0->0
+WARN [10-20|14:21:26] Synchronisation failed, dropping peer    peer=a24ac7c5484ef4ed err="retrieved hash chain is invalid"
+WARN [10-20|14:21:35] Rolled back headers                      count=178 header=1096314->1096139 fast=1096139->1096139 block=0->0
+WARN [10-20|14:21:35] Synchronisation failed, dropping peer    peer=343149e4feefa15d err="retrieved hash chain is invalid"
+WARN [10-20|14:22:05] Rolled back headers                      count=180 header=1096139->1096139 fast=1096139->1096139 block=0->0
+WARN [10-20|14:22:05] Synchronisation failed, dropping peer    peer=a24ac7c5484ef4ed err="retrieved hash chain is invalid"
+WARN [10-20|14:22:19] Rolled back headers                      count=181 header=1096139->1096139 fast=1096139->1096139 block=0->0
+WARN [10-20|14:22:19] Synchronisation failed, dropping peer    peer=343149e4feefa15d err="retrieved hash chain is invalid"
+WARN [10-20|14:22:24] Rolled back headers                      count=181 header=1096139->1096139 fast=1096139->1096139 block=0->0
+WARN [10-20|14:22:24] Synchronisation failed, dropping peer    peer=a24ac7c5484ef4ed err="retrieved hash chain is invalid"
+WARN [10-20|14:22:39] Rolled back headers                      count=182 header=1096139->1096139 fast=1096139->1096139 block=0->0
+WARN [10-20|14:22:39] Synchronisation failed, dropping peer    peer=343149e4feefa15d err="retrieved hash chain is invalid"
+WARN [10-20|14:22:57] Rolled back headers                      count=183 header=1096139->1096139 fast=1096139->1096139 block=0->0
+WARN [10-20|14:22:57] Synchronisation failed, dropping peer    peer=343149e4feefa15d err="retrieved hash chain is invalid"
+WARN [10-20|14:23:15] Rolled back headers                      count=184 header=1096139->1096139 fast=1096139->1096139 block=0->0
+WARN [10-20|14:23:15] Synchronisation failed, dropping peer    peer=a24ac7c5484ef4ed err="retrieved hash chain is invalid"
+WARN [10-20|14:23:52] Rolled back headers                      count=187 header=1096139->1096139 fast=1096139->1096139 block=0->0
+WARN [10-20|14:23:52] Synchronisation failed, dropping peer    peer=a24ac7c5484ef4ed err="retrieved hash chain is invalid"
+WARN [10-20|14:24:03] Rolled back headers                      count=188 header=1096139->1096139 fast=1096139->1096139 block=0->0
+WARN [10-20|14:24:03] Synchronisation failed, dropping peer    peer=343149e4feefa15d err="retrieved hash chain is invalid"
+WARN [10-20|14:24:33] Rolled back headers                      count=190 header=1096139->1096139 fast=1096139->1096139 block=0->0
+WARN [10-20|14:24:33] Synchronisation failed, dropping peer    peer=a24ac7c5484ef4ed err="retrieved hash chain is invalid"
+WARN [10-20|14:24:49] Rolled back headers                      count=191 header=1096139->1096139 fast=1096139->1096139 block=0->0
+WARN [10-20|14:24:49] Synchronisation failed, dropping peer    peer=343149e4feefa15d err="retrieved hash chain is invalid"
+WARN [10-20|14:24:55] Rolled back headers                      count=191 header=1096139->1096139 fast=1096139->1096139 block=0->0
+WARN [10-20|14:24:55] Synchronisation failed, dropping peer    peer=343149e4feefa15d err="retrieved hash chain is invalid"
+INFO [10-20|14:25:09] Imported new block headers               count=15  elapsed=16.000ms number=1096331 hash=83f226…2ddf0b ignored=177
+INFO [10-20|14:25:10] Imported new block receipts              count=5   elapsed=1ms      bytes=2024  number=1096144 hash=9e7325…1374a2 ignored=0
+WARN [10-20|14:25:12] Rolled back headers                      count=15  header=1096331->1096316 fast=1096144->1096144 block=0->0
+WARN [10-20|14:25:12] Synchronisation failed, dropping peer    peer=a24ac7c5484ef4ed err="retrieved hash chain is invalid"
+WARN [10-20|14:25:34] Rolled back headers                      count=189 header=1096316->1096144 fast=1096144->1096144 block=0->0
+WARN [10-20|14:25:34] Synchronisation failed, dropping peer    peer=343149e4feefa15d err="retrieved hash chain is invalid"
+WARN [10-20|14:25:51] Rolled back headers                      count=190 header=1096144->1096144 fast=1096144->1096144 block=0->0
+WARN [10-20|14:25:51] Synchronisation failed, dropping peer    peer=a24ac7c5484ef4ed err="retrieved hash chain is invalid"
+WARN [10-20|14:26:04] Rolled back headers                      count=191 header=1096144->1096144 fast=1096144->1096144 block=0->0
+WARN [10-20|14:26:04] Synchronisation failed, dropping peer    peer=343149e4feefa15d err="retrieved hash chain is invalid"
+INFO [10-20|14:26:19] Imported new block headers               count=5   elapsed=27.001ms number=1096336 hash=220159…09b73b ignored=187
+INFO [10-20|14:26:19] Imported new block receipts              count=3   elapsed=1.000ms  bytes=3702  number=1096147 hash=7ba4f7…eabd76 ignored=0
+INFO [10-20|14:26:19] Imported new block receipts              count=3   elapsed=0s       bytes=12    number=1096150 hash=6d64e4…40cdb6 ignored=0
+WARN [10-20|14:26:21] Rolled back headers                      count=5   header=1096336->1096331 fast=1096150->1096150 block=0->0
+WARN [10-20|14:26:21] Synchronisation failed, dropping peer    peer=a24ac7c5484ef4ed err="retrieved hash chain is invalid"
+WARN [10-20|14:26:34] Rolled back headers                      count=187 header=1096331->1096150 fast=1096150->1096150 block=0->0
+WARN [10-20|14:26:34] Synchronisation failed, dropping peer    peer=343149e4feefa15d err="retrieved hash chain is invalid"
+WARN [10-20|14:26:59] Rolled back headers                      count=188 header=1096150->1096150 fast=1096150->1096150 block=0->0
+WARN [10-20|14:26:59] Synchronisation failed, dropping peer    peer=a24ac7c5484ef4ed err="retrieved hash chain is invalid"
+WARN [10-20|14:27:14] Rolled back headers                      count=189 header=1096150->1096150 fast=1096150->1096150 block=0->0
+WARN [10-20|14:27:14] Synchronisation failed, dropping peer    peer=343149e4feefa15d err="retrieved hash chain is invalid"
+WARN [10-20|14:27:27] Rolled back headers                      count=190 header=1096150->1096150 fast=1096150->1096150 block=0->0
+WARN [10-20|14:27:27] Synchronisation failed, dropping peer    peer=a24ac7c5484ef4ed err="retrieved hash chain is invalid"
+WARN [10-20|14:27:28] System clock seems off by -9m23.562538419s, which can prevent network connectivity 
+WARN [10-20|14:27:28] Please enable network time synchronisation in system settings. 
+WARN [10-20|14:27:44] Rolled back headers                      count=191 header=1096150->1096150 fast=1096150->1096150 block=0->0
+WARN [10-20|14:27:44] Synchronisation failed, dropping peer    peer=343149e4feefa15d err="retrieved hash chain is invalid"
+INFO [10-20|14:28:08] Imported new block headers               count=6   elapsed=14.000ms number=1096342 hash=505927…cd47fd ignored=186
+INFO [10-20|14:28:09] Imported new block receipts              count=2   elapsed=0s       bytes=2126  number=1096152 hash=09aecc…c9d222 ignored=0
+INFO [10-20|14:28:10] Imported new block receipts              count=7   elapsed=2.000ms  bytes=3288  number=1096159 hash=1b12fb…cf8c8e ignored=0
+WARN [10-20|14:28:10] Rolled back headers                      count=7   header=1096342->1096336 fast=1096159->1096159 block=0->0
+WARN [10-20|14:28:10] Synchronisation failed, dropping peer    peer=a24ac7c5484ef4ed err="retrieved hash chain is invalid"
+WARN [10-20|14:28:13] Rolled back headers                      count=184 header=1096336->1096159 fast=1096159->1096159 block=0->0
+WARN [10-20|14:28:13] Synchronisation failed, dropping peer    peer=343149e4feefa15d err="retrieved hash chain is invalid"
+WARN [10-20|14:28:36] Rolled back headers                      count=186 header=1096159->1096159 fast=1096159->1096159 block=0->0
+WARN [10-20|14:28:36] Synchronisation failed, dropping peer    peer=a24ac7c5484ef4ed err="retrieved hash chain is invalid"
+WARN [10-20|14:28:54] Rolled back headers                      count=187 header=1096159->1096159 fast=1096159->1096159 block=0->0
+WARN [10-20|14:28:54] Synchronisation failed, dropping peer    peer=343149e4feefa15d err="retrieved hash chain is invalid"
+WARN [10-20|14:29:20] Rolled back headers                      count=189 header=1096159->1096159 fast=1096159->1096159 block=0->0
+WARN [10-20|14:29:20] Synchronisation failed, dropping peer    peer=a24ac7c5484ef4ed err="retrieved hash chain is invalid"
+WARN [10-20|14:29:34] Rolled back headers                      count=190 header=1096159->1096159 fast=1096159->1096159 block=0->0
+WARN [10-20|14:29:34] Synchronisation failed, dropping peer    peer=343149e4feefa15d err="retrieved hash chain is invalid"
+WARN [10-20|14:29:58] Rolled back headers                      count=191 header=1096159->1096159 fast=1096159->1096159 block=0->0
+WARN [10-20|14:29:58] Synchronisation failed, dropping peer    peer=a24ac7c5484ef4ed err="retrieved hash chain is invalid"
+INFO [10-20|14:30:04] Imported new block headers               count=9   elapsed=26.001ms number=1096351 hash=1f9316…15e37c ignored=183
+INFO [10-20|14:30:05] Imported new block receipts              count=2   elapsed=0s       bytes=1516  number=1096161 hash=8cd24d…e9c00d ignored=0
+WARN [10-20|14:30:05] Rolled back headers                      count=9   header=1096351->1096342 fast=1096161->1096161 block=0->0
+WARN [10-20|14:30:05] Synchronisation failed, dropping peer    peer=343149e4feefa15d err="retrieved hash chain is invalid"
+INFO [10-20|14:30:47] Imported new block headers               count=2   elapsed=19.001ms number=1096353 hash=31c19a…37a8b8 ignored=190
+INFO [10-20|14:30:49] Imported new block receipts              count=3   elapsed=1ms      bytes=5189  number=1096164 hash=f4c777…573bbc ignored=0
+WARN [10-20|14:30:51] Rolled back headers                      count=3   header=1096353->1096351 fast=1096164->1096164 block=0->0
+WARN [10-20|14:30:51] Synchronisation failed, dropping peer    peer=a24ac7c5484ef4ed err="retrieved hash chain is invalid"
+WARN [10-20|14:31:07] Rolled back headers                      count=191 header=1096351->1096164 fast=1096164->1096164 block=0->0
+WARN [10-20|14:31:07] Synchronisation failed, dropping peer    peer=343149e4feefa15d err="retrieved hash chain is invalid"
+INFO [10-20|14:31:21] Imported new block headers               count=3   elapsed=30.001ms number=1096356 hash=24b683…6e011b ignored=189
+INFO [10-20|14:31:22] Imported new block receipts              count=1   elapsed=1.000ms  bytes=2552  number=1096165 hash=accf2c…057de4 ignored=0
+WARN [10-20|14:31:24] Rolled back headers                      count=3   header=1096356->1096353 fast=1096165->1096165 block=0->0
+WARN [10-20|14:31:24] Synchronisation failed, dropping peer    peer=a24ac7c5484ef4ed err="retrieved hash chain is invalid"
+INFO [10-20|14:31:41] Imported new state entries               count=435 elapsed=0s       processed=1417 pending=707 retry=0 duplicate=0 unexpected=0
+INFO [10-20|14:31:41] Imported new block headers               count=1   elapsed=12.000ms number=1096357 hash=974dcb…ccd211 ignored=191
+WARN [10-20|14:31:43] Rolled back headers                      count=1   header=1096357->1096356 fast=1096165->1096165 block=0->0
+INFO [10-20|14:31:43] Imported new state entries               count=291 elapsed=0s       processed=1708 pending=977 retry=0 duplicate=0 unexpected=0
+WARN [10-20|14:34:17] Stalling state sync, dropping peer       peer=a24ac7c5484ef4ed
+WARN [10-20|14:35:15] Stalling state sync, dropping peer       peer=343149e4feefa15d
+WARN [10-20|14:35:15] Node data write error                    err="state node 5e1600…8e7dd2 failed with all peers (0 tries, 0 peers)"
+WARN [10-20|14:35:15] Synchronisation failed, dropping peer    peer=a24ac7c5484ef4ed err="retrieved hash chain is invalid"
+INFO [10-20|14:35:26] Imported new block headers               count=0   elapsed=35.002ms number=1096357 hash=974dcb…ccd211 ignored=192
+INFO [10-20|14:35:26] Imported new state entries               count=252 elapsed=0s       processed=1960 pending=506 retry=0 duplicate=0 unexpected=0
+WARN [10-20|14:35:28] Rolled back headers                      count=15  header=1096356->1096356 fast=1096165->1096165 block=0->0
+WARN [10-20|14:35:28] Synchronisation failed, dropping peer    peer=a24ac7c5484ef4ed err="retrieved hash chain is invalid"
+INFO [10-20|14:35:34] Imported new block headers               count=0   elapsed=16.000ms number=1096357 hash=974dcb…ccd211 ignored=192
+WARN [10-20|14:35:35] Rolled back headers                      count=16  header=1096356->1096356 fast=1096165->1096165 block=0->0
+WARN [10-20|14:35:35] Synchronisation failed, dropping peer    peer=343149e4feefa15d err="retrieved hash chain is invalid"
+INFO [10-20|14:35:58] Imported new block headers               count=0   elapsed=12.000ms number=1096357 hash=974dcb…ccd211 ignored=192
+WARN [10-20|14:36:00] Rolled back headers                      count=17  header=1096356->1096356 fast=1096165->1096165 block=0->0
+INFO [10-20|14:36:01] Imported new state entries               count=0   elapsed=0s       processed=1960 pending=1   retry=1 duplicate=0 unexpected=207
+WARN [10-20|14:37:28] Stalling state sync, dropping peer       peer=a24ac7c5484ef4ed
+WARN [10-20|14:38:27] System clock seems off by -9m23.571683602s, which can prevent network connectivity 
+WARN [10-20|14:38:27] Please enable network time synchronisation in system settings. 
