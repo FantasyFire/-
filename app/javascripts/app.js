@@ -2,7 +2,7 @@
 import "../stylesheets/app.css";
 
 // Import libraries we need.
-import { default as $ } from 'jquery';
+// import { default as $ } from 'jquery';
 // import '../javascripts/jquery.min.js';
 // import { default as $ } from '../javascripts/jquery.min.js';
 import { default as Web3 } from 'web3';
@@ -12,7 +12,7 @@ import { default as contract } from 'truffle-contract'
 import tjipcontract_artifacts from '../../build/contracts/TJIPContract.json'
 
 var TJIPContract = contract(tjipcontract_artifacts);
-var TJIPContractAddress_rinkeby = "0x1cb54bf5e080496248772e75ca3e634cff92da0b";
+var TJIPContractAddress_rinkeby = "0x385f1d491b3bf2dffa3d1f16710403c9f4e0f1fa";
 
 // The following code is simple to show off interacting with your contracts.
 // As your needs grow you will likely need to change its form and structure.
@@ -22,6 +22,9 @@ var account;
 var default_account = "0x6484a4b1baacb294c17a6bc777ab6ccb1c69acd8";
 var default_resource = "0x123";
 var cur_index = 1;
+
+// 一些常量
+const BYTE32_EMPTY = '0x0000000000000000000000000000000000000000000000000000000000000000';
 
 window.App = {
   start: function () {
@@ -41,10 +44,14 @@ window.App = {
         return;
       }
 
-      accounts = accs;
-      account = accounts[0];
+      self.accounts = accounts = accs;
+      self.account = account = accounts[0];
 
       // self.refreshBalance();
+    });
+
+    TJIPContract.at(TJIPContractAddress_rinkeby).then(function(instance) {
+      self.instance = instance;
     });
   },
 
@@ -92,9 +99,7 @@ window.App = {
   // 公共接口
   joinCommunity: function() {
     var self = this;
-    TJIPContract.at(TJIPContractAddress_rinkeby).then(function(instance) {
-      return instance.joinCommunity({from: account});
-    }).then(function(result) {
+    self.instance.joinCommunity({from: account}).then(function(result) {
       self.printOutput("加入天姬会员", result);
     }).catch(function(e) {
       console.log(e);
@@ -105,9 +110,7 @@ window.App = {
   showOriginatorInfo: function () {
     var self = this;
     var originatorAddress = document.getElementById("showOriginatorInfo_originatorAddress").value || default_account;
-    TJIPContract.at(TJIPContractAddress_rinkeby).then(function(instance) {
-      return instance.queryOriginator(originatorAddress, {from: account});
-    }).then(function(result) {
+    self.instance.queryOriginator(originatorAddress, {from: account}).then(function(result) {
       console.log('$1', result);
     }).catch(function(e) {
       console.log(e);
@@ -118,9 +121,7 @@ window.App = {
   showBrokerInfo: function () {
     var self = this;
     var brokerAddress = document.getElementById("showBrokerInfo_brokerAddress").value || default_account;
-    TJIPContract.at(TJIPContractAddress_rinkeby).then(function(instance) {
-      return instance.queryBroker(brokerAddress, {from: account});
-    }).then(function(result) {
+    self.instance.queryBroker(brokerAddress, {from: account}).then(function(result) {
       console.log('$1', result);
     }).catch(function(e) {
       console.log(e);
@@ -131,9 +132,7 @@ window.App = {
   showResourceInfo: function () {
     var self = this;
     var fileMD5 = document.getElementById("showResourceInfo_fileMD5").value || default_resource;
-    TJIPContract.at(TJIPContractAddress_rinkeby).then(function(instance) {
-      return instance.queryStakers(fileMD5, {from: account});
-    }).then(function(result) {
+    self.instance.queryStakers(fileMD5, {from: account}).then(function(result) {
       console.log('$1', result);
     }).catch(function(e) {
       console.log(e);
@@ -146,9 +145,7 @@ window.App = {
     var self = this;
     var user = document.getElementById("setRights_user").value || default_account;
     var rights = parseInt(document.getElementById("setRights_rights").value) || 0;
-    TJIPContract.at(TJIPContractAddress_rinkeby).then(function(instance) {
-      return instance.setRights(user, rights, {from: account});
-    }).then(function(result) {
+    self.instance.setRights(user, rights, {from: account}).then(function(result) {
       self.printOutput("设置权限", result);
     }).catch(function(e) {
       console.log(e);
@@ -160,9 +157,7 @@ window.App = {
     var self = this;
     var originatorAddress = document.getElementById("publishInvention_originatorAddress").value || default_account;
     var fileMD5 = document.getElementById("publishInvention_fileMD5").value || default_resource;
-    TJIPContract.at(TJIPContractAddress_rinkeby).then(function(instance) {
-      return instance.publishInvention(originatorAddress, fileMD5, {from: account});
-    }).then(function(result) {
+    self.instance.publishInvention(originatorAddress, fileMD5, {from: account}).then(function(result) {
       self.printOutput("发布", result);
     }).catch(function(e) {
       console.log(e);
@@ -177,9 +172,7 @@ window.App = {
     var basePrice = parseInt(document.getElementById("inventPricing_basePrice").value) || 3;
     basePrice *= 10**17;
     var profitRatio = parseInt(document.getElementById("inventPricing_profitRatio").value) || 20;
-    TJIPContract.at(TJIPContractAddress_rinkeby).then(function(instance) {
-      return instance.inventPricing(fileMD5, basePrice, profitRatio, {from: account});
-    }).then(function(result) {
+    self.instance.inventPricing(fileMD5, basePrice, profitRatio, {from: account}).then(function(result) {
       self.printOutput("原创资源定价", result);
     }).catch(function(e) {
       console.log(e);
@@ -192,10 +185,8 @@ window.App = {
     var self = this;
     var fileMD5 = document.getElementById("sale_fileMD5").value || default_resource;
     var price = parseInt(document.getElementById("sale_price").value) || 13;
-    price *= 10**17
-    TJIPContract.at(TJIPContractAddress_rinkeby).then(function(instance) {
-      return instance.sale(fileMD5, price, {from: account});
-    }).then(function(result) {
+    price *= 10**17;
+    self.instance.sale(fileMD5, price, {from: account}).then(function(result) {
       self.printOutput("资源上架", result);
     }).catch(function(e) {
       console.log(e);
@@ -210,13 +201,55 @@ window.App = {
     value *= 10**17;
     var fileMD5 = document.getElementById("buy_fileMD5").value || default_resource;
     var brokerAddress = document.getElementById("buy_brokerAddress").value || default_account;
-    TJIPContract.at(TJIPContractAddress_rinkeby).then(function(instance) {
-      return instance.buy(fileMD5, brokerAddress, {from: account, value: value});
-    }).then(function(result) {
+    self.instance.buy(fileMD5, brokerAddress, {from: account, value: value}).then(function(result) {
       self.printOutput("购买资源", result);
     }).catch(function(e) {
       console.log(e);
       self.setStatus("Error buy; see log.");
+    });
+  },
+
+  // 以下接口供天姬调用
+  /**
+   * 查询本人是否可以上传
+   */
+  canUpload: function () {
+    return new Promise((resolve, reject) => {
+      Promise.all([
+        App.instance.TJUserGroup(account, {from: account}),
+        App.instance.brokerGroup(account, {from: account})
+      ]).then(values => {
+        resolve({success:true, value:values.every(v => v.toNumber()==1)});
+      }).catch(e => {
+        resolve({success:false, value:e});
+      });
+    });
+  },
+
+  /**
+   * 查询资源是否存在
+   */
+  checkIfResExist: function (md5) {
+    return new Promise((resolve, reject) => {
+      App.instance.resources(md5, {from: account}).then(function (res) {
+        resolve({success:true, value:res[0]!=BYTE32_EMPTY});
+      }).catch(e => {
+        resolve({success:false, value:e});
+      });
+    });
+  },
+
+  /**
+   * 上架资源
+   */
+  putOnSale: function (md5, price) {
+    return new Promise((resolve, reject) => {
+      price *= 10**17;
+      App.instance.sale(md5, price, {from: account}).then(function (res) {
+        resolve({success:true, value:0});
+      }).catch(e => {
+        resolve({success:false, value:e});
+      });
     });
   }
 };
@@ -235,3 +268,24 @@ window.addEventListener('load', function () {
 
   App.start();
 });
+
+/**
+ * 用于监听message，响应天姬页面的请求
+ */
+// window.addEventListener('message', function (event) {
+//   let data = event.data || {};
+//   if (data.msg) { // 仅当data.msg不为空时处理
+//     switch (data.msg) {
+//       case 'canUpload':
+//         Promise.all([
+//           App.instance.TJUserGroup(account, {from: account}),
+//           App.instance.brokerGroup(account, {from: account})
+//         ]).then(values => {
+//           parent.postMessage({msg:'onCanUpload', res:values.every(v => v.toNumber()==1)});
+//         });
+//         break;
+//       default:
+//         console.log('未支持消息:$1的响应', data.msg);
+//     }
+//   }
+// });
