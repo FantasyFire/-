@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>资源上传</title>
+  <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+  <script src="../build/app.js"></script>
+</head>
+<body>
+  <h1>智子天姬</h1>
+  <h2>资源上传</h2>
+  <br>
+  <div onclick="App.showPage(this)" class="div_tab selected" i="1">公共接口</div>
+  <div onclick="App.showPage(this)" class="div_tab" i="2">审核方接口</div>
+  <div onclick="App.showPage(this)" class="div_tab" i="3">上传方接口</div>
+  <div onclick="App.showPage(this)" class="div_tab" i="4">原创者接口</div>
+  <div class="block show" i="1">
+    <div class="block_interface" i="1">
+      <br><button id="joinCommunity" onclick="App.joinCommunity()">成为天姬会员</button>
+      <br>
+      <br><label for="showOriginatorInfo_originatorAddress">原创者的addrees:</label><input type="text" id="showOriginatorInfo_originatorAddress" placeholder="e.g., 0x6484a4b1baacb294c17a6bc777ab6ccb1c69acd8"></input>
+      <br><button id="showOriginatorInfo" onclick="App.showOriginatorInfo()">查询原创者的信息</button>
+      <br>
+      <br><label for="showBrokerInfo_brokerAddress">上传的addrees:</label><input type="text" id="showBrokerInfo_brokerAddress" placeholder="e.g., 0x6484a4b1baacb294c17a6bc777ab6ccb1c69acd8"></input>
+      <br><button id="showBrokerInfo" onclick="App.showBrokerInfo()">查询上传的信息</button>
+      <br>
+      <br><label for="showResourceInfo_fileMD5">资源的MD5:</label><input type="text" id="showResourceInfo_fileMD5" placeholder="e.g., 0x123"></input>
+      <br><button id="showResourceInfo" onclick="App.showResourceInfo()">查询资源的信息</button>
+      <br>
+      <br><label for="buy_value">以太币（10^17wei）:</label><input type="text" id="buy_value" placeholder="e.g., 13"></input>
+      <br><label for="buy_fileMD5">资源的MD5:</label><input type="text" id="buy_fileMD5" placeholder="e.g., 0x123"></input>
+      <br><label for="buy_brokerAddress">上传的addrees:</label><input type="text" id="buy_brokerAddress" placeholder="e.g., 0x6484a4b1baacb294c17a6bc777ab6ccb1c69acd8"></input>
+      <br><button id="buy" onclick="App.buy()">购买</button>
+    </div>
+    <div id="output" class="block_output">
+    </div>
+  </div>
+  
+  <div class="block hide" i="2">
+    <div class="block_interface" i="2">
+      <br><label for="setRights_user">用户的addrees:</label><input type="text" id="setRights_user" placeholder="e.g., 0x6484a4b1baacb294c17a6bc777ab6ccb1c69acd8"></input>
+      <br><label for="setRights_rights">权限代号:（1：审核方，2：上传方，3：原创者）</label><input type="text" id="setRights_rights" placeholder="e.g., 1"></input>
+      <br><button id="setRights" onclick="App.setRights()">设置权限</button>
+      <br>
+      <br><label for="publishInvention_originatorAddress">原创者的addrees:</label><input type="text" id="publishInvention_originatorAddress" placeholder="e.g., 0x6484a4b1baacb294c17a6bc777ab6ccb1c69acd8"></input>
+      <br><label for="publishInvention_fileMD5">资源的MD5：</label><input type="text" id="publishInvention_fileMD5" placeholder="e.g., 0x123"></input>
+      <br><button id="publishInvention" onclick="App.publishInvention()">发布资源</button>
+    </div>
+    <div id="output" class="block_output">
+    </div>
+  </div>
+
+  <div class="block hide" i="3">
+    <div class="block_interface" i="3">
+      <br><label for="sale_fileMD5">资源的MD5：:</label><input type="text" id="sale_fileMD5" placeholder="e.g., 0x123"></input>
+      <br><label for="sale_price">定价（10^17wei）：</label><input type="text" id="sale_price" placeholder="e.g., 13"></input>
+      <br><button id="sale" onclick="App.sale()">发布资源上架信息</button>
+    </div>
+    <div id="output" class="block_output">
+    </div>
+  </div>
+
+  <div class="block hide" i="4">
+    <div class="block_interface">
+      <br><label for="inventPricing_fileMD5">资源的MD5：:</label><input type="text" id="inventPricing_fileMD5" placeholder="e.g., 0x123"></input>
+      <br><label for="inventPricing_basePrice">底价（10^17wei）：</label><input type="text" id="inventPricing_basePrice" placeholder="e.g., 3"></input>
+      <br><label for="inventPricing_profitRatio">分成（0~100）：</label><input type="text" id="inventPricing_profitRatio" placeholder="e.g., 20"></input>
+      <br><button id="inventPricing" onclick="App.inventPricing()">原创资源定价</button>
+    </div>
+    <div id="output" class="block_output">
+    </div>
+  </div>
+  <span id="status"></span>
+  <br>
+  <span class="hint"><strong>Hint:</strong> open the browser developer console to view any errors and warnings.</span>
+</body>
+</html>
