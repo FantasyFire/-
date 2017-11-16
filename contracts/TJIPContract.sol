@@ -83,6 +83,7 @@ contract TJIPContract {
 
     // 查阅资源的上传列表
     function queryStakers(bytes32 fileMD5) public constant onlyTJUser returns(
+        bytes32 _fileMD5,
         address originatorAddress,
         uint basePrice,
         uint profitRatio,
@@ -90,7 +91,7 @@ contract TJIPContract {
     {
         Resource storage res = resources[fileMD5];
         // ShowResourceInfo(res.originatorAddress, res.basePrice, res.profitRatio, res.brokers);
-        return (res.originatorAddress, res.basePrice, res.profitRatio, res.brokers);
+        return (fileMD5, res.originatorAddress, res.basePrice, res.profitRatio, res.brokers);
     }
 
     // 查阅某人上传的资源信息
