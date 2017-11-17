@@ -102,7 +102,7 @@ contract TJIPContract {
     {
         Resource storage res = resources[fileMD5];
         // ShowResourceInfo(res.originatorAddress, res.basePrice, res.profitRatio, res.brokers);
-        return (fileMD5, res.originatorAddress, res.basePrice, res.profitRatio, res.brokers);
+        return (res.fileMD5, res.originatorAddress, res.basePrice, res.profitRatio, res.brokers);
     }
 
     // 查阅某人上传的资源信息
