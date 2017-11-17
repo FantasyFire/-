@@ -21,14 +21,23 @@ contract TJIPContract {
         uint profitRatio;
         address[] brokers; // 这里用结构体存放贩卖结构好，还是只存一个地址数组好？数组能否为动态数组？
     }
+    // 资源组结构体
+    struct ResGroup {
+        bytes32 zMD5; // 资源md5
+        bytes32 gMD5; // 解压密钥
+        bytes32[] fileMD5s; // 文件md5数组
+        string zUrl; // 资源地址
+    }
     // 贩卖结构体（用于存储在区块链中）
     struct Sale {
         address brokerAddress;
-        bytes32 fileMD5;
+        bytes32 zMD5;
         uint price;
     }
     // 资源映射（fileMD5 => 资源结构体）
     mapping(bytes32 => Resource) public resources;
+    // 资源组映射（zMD5 => 资源组结构体）
+    mapping(bytes32 => ResGroup) public resGroups;
     // 贩卖映射（上传人地址 => 贩卖结构体数组）
     mapping(address => Sale[]) public sales;
     // 原创映射（原创者地址 => 资源结构体数组）
