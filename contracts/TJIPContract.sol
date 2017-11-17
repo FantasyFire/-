@@ -19,20 +19,20 @@ contract TJIPContract {
         address originatorAddress;
         uint basePrice;
         uint profitRatio; // 加入资源组后，该值实际上已弃用
-        address[] brokers; // 这里用结构体存放贩卖结构好，还是只存一个地址数组好？数组能否为动态数组？
+        address[] brokers; // 加入资源组后，该值实际上已弃用
     }
     // 资源组结构体
     struct ResGroup {
         bytes32 zMD5; // 资源md5
-        bytes32 gMD5; // 解压密钥
         bytes32[] fileMD5s; // 文件md5数组
-        string zUrl; // 资源地址
     }
     // 贩卖结构体（用于存储在区块链中）
     struct Sale {
         address brokerAddress;
         bytes32 zMD5;
         uint price;
+        bytes32 gMD5; // 解压密钥
+        string zUrl; // 资源地址
     }
     // 资源映射（fileMD5 => 资源结构体）
     mapping(bytes32 => Resource) public resources;
@@ -114,6 +114,7 @@ contract TJIPContract {
         Sale[] storage saleArray = sales[brokerAddress];
         zMD5 = new bytes32[](saleArray.length);
         price = new uint[](saleArray.length);
+        // fileMD5s = new string[](saleArray.length);
         originatorAddress = new address[](saleArray.length);
         // basePrice = new uint[](saleArray.length);
         // profitRatio = new uint[](saleArray.length);
@@ -121,6 +122,15 @@ contract TJIPContract {
             Sale storage _sale = saleArray[i];
             zMD5[i] = _sale.zMD5;
             price[i] = _sale.price;
+            // 想把fileMD5合成一串字符串，但是找不到把bytes32转字符串的方法
+            // string sfileMD5s = ""; 
+            // fileMD5s[i] = sfileMD5s;
+            // ResGroup storage resGroup = resGroups[_sale.zMD5];
+            // for (uint j = 0; j < resGroup.fileMD5s.length; j++) {
+            //     sfileMD5s += resGroup.fileMD5s[j] + ";"; // 会报错
+            // }
+            // fileMD5s[i] = sfileMD5s;
+
             // Resource storage res = resources[_sale.fileMD5];
             // basePrice[i] = res.basePrice;
             // profitRatio[i] = res.profitRatio;
@@ -156,9 +166,9 @@ contract TJIPContract {
         require(0<=profitRatio && profitRatio<=100);
         res.basePrice = basePrice;
         res.profitRatio = profitRatio;
-        // 同时认为原创方以原价发布一个销售信息
-        Sale storage _sale;
-        Sale[] storage mySales = sales[msg.sender];
+        // 同时认为原创方以原价发布一个销售信息（改为资源组后，不能这样发布单品的贩卖了）
+        // Sale storage _sale;
+        // Sale[] storage mySales = sales[msg.sender];
     }
 
     // 审核方接口
@@ -191,10 +201,10 @@ contract TJIPContract {
 
     // 上传方接口
     function sale(bytes32 zMD5, uint price, bytes32 gMD5, bytes32[] fileMD5s, string zUrl) public onlyBroker {
-        // Resource storage res = resources[fileMD5];
         ResGroup storage resGroup = resGroups[zMD5];
         if (resGroup.zMD5 == 0) { // 若未有该资源，则初始化一个
             resGroup.zMD5 = zMD5;
+            resGroup.fileMD5s = fileMD5s;
         }
         uint i = 0;
         uint totalBasePrice = 0; // 统计总基价
@@ -214,13 +224,17 @@ contract TJIPContract {
         }
         if (exist) {
             mySales[i].price = price;
+            mySales[i].gMD5 = gMD5;
+            mySales[i].zUrl = zUrl;
         } else {
             mySales.push(Sale({
                 brokerAddress: msg.sender,
                 zMD5: zMD5,
-                price: price
+                price: price,
+                gMD5: gMD5,
+                zUrl: zUrl
             }));
-            res.brokers.push(msg.sender);
+            // res.brokers.push(msg.sender);
         }
     }
 
@@ -229,29 +243,31 @@ contract TJIPContract {
         Sale storage _sale;
         Sale[] storage brokerSales = sales[brokerAddress];
         uint i = 0;
+        Resource storage res;
         for (i = 0; i < brokerSales.length; i++) { // 尝试找到贩卖信息
             if (brokerSales[i].zMD5 == zMD5) {
                 _sale = brokerSales[i];
                 break;
             }
         }
-        require(_sale.zMD5!=0 && msg.value>=_sale.price); // 保证贩卖信息存在且买家给够了钱，如果给多了钱怎么处理？
+        require(_sale.zMD5!=0); // 保证贩卖信息存在
         ResGroup storage resGroup = resGroups[zMD5]; // 获取资源组，逐一转账
+        // 重新统计基价（因为原创者任何时候都有可能重新定价）
+        uint totalBasePrice = 0; // 统计总基价
+        for (i = 0; i < resGroup.fileMD5s.length; i++) {
+            res = resources[resGroup.fileMD5s[i]];
+            totalBasePrice += res.basePrice;
+        }
+        require(_sale.price>=totalBasePrice && msg.value>=_sale.price); // 保证买家给够了钱
         uint profit = _sale.price;
         for (i = 0; i < resGroup.fileMD5s.length; i++) {
-            Resource storage res = resources[resGroup.fileMD5s[i]];
+            res = resources[resGroup.fileMD5s[i]];
             if (res.originatorAddress != 0 && res.basePrice > 0) {
                 res.originatorAddress.transfer(res.basePrice);
                 profit -= res.basePrice;
             }
-            // if (res.originatorAddress == 0) {
-            //     _sale.brokerAddress.transfer(_sale.price);
-            // } else {
-            //     res.originatorAddress.transfer(res.basePrice + (_sale.price-res.basePrice)*res.profitRatio/100);
-            //     _sale.brokerAddress.transfer((_sale.price-res.basePrice)*(100-res.profitRatio)/100);
-            // }
         }
         _sale.brokerAddress.transfer(profit);
-        BuySuccess(resGroup.zMD5, resGroup.zUrl, resGroup.gMD5);
+        BuySuccess(_sale.zMD5, _sale.zUrl, _sale.gMD5);
     }
 }

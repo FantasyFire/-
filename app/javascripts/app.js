@@ -12,7 +12,11 @@ import { default as contract } from 'truffle-contract'
 import tjipcontract_artifacts from '../../build/contracts/TJIPContract.json'
 
 var TJIPContract = contract(tjipcontract_artifacts);
-var TJIPContractAddress_rinkeby = "0x385f1d491b3bf2dffa3d1f16710403c9f4e0f1fa";
+// 这个是改为资源组逻辑前的合约地址
+// var TJIPContractAddress_rinkeby = "0x385f1d491b3bf2dffa3d1f16710403c9f4e0f1fa";
+
+// 这个是更改为资源组逻辑后的合约地址
+var TJIPContractAddress_rinkeby = "0x47e558f88068d2d0e70b38915f31257b7eb3bdc2";
 
 // The following code is simple to show off interacting with your contracts.
 // As your needs grow you will likely need to change its form and structure.
@@ -182,31 +186,33 @@ window.App = {
 
   // 上传方接口
   sale: function () {
-    var self = this;
-    var fileMD5 = document.getElementById("sale_fileMD5").value || default_resource;
-    var price = parseInt(document.getElementById("sale_price").value) || 13;
-    price *= 10**17;
-    self.instance.sale(fileMD5, price, {from: account}).then(function(result) {
-      self.printOutput("资源上架", result);
-    }).catch(function(e) {
-      console.log(e);
-      self.setStatus("Error sale; see log.");
-    });
+    console.log('暂时废用');
+    // var self = this;
+    // var fileMD5 = document.getElementById("sale_fileMD5").value || default_resource;
+    // var price = parseInt(document.getElementById("sale_price").value) || 13;
+    // price *= 10**17;
+    // self.instance.sale(fileMD5, price, {from: account}).then(function(result) {
+    //   self.printOutput("资源上架", result);
+    // }).catch(function(e) {
+    //   console.log(e);
+    //   self.setStatus("Error sale; see log.");
+    // });
   },
 
   // 购买方接口
   buy: function (fileMD5, brokerAddress) {
-    var self = this;
-    var value = document.getElementById("buy_value").value || 13;
-    value *= 10**17;
-    var fileMD5 = document.getElementById("buy_fileMD5").value || default_resource;
-    var brokerAddress = document.getElementById("buy_brokerAddress").value || default_account;
-    self.instance.buy(fileMD5, brokerAddress, {from: account, value: value}).then(function(result) {
-      self.printOutput("购买资源", result);
-    }).catch(function(e) {
-      console.log(e);
-      self.setStatus("Error buy; see log.");
-    });
+    console.log('暂时废用');
+    // var self = this;
+    // var value = document.getElementById("buy_value").value || 13;
+    // value *= 10**17;
+    // var fileMD5 = document.getElementById("buy_fileMD5").value || default_resource;
+    // var brokerAddress = document.getElementById("buy_brokerAddress").value || default_account;
+    // self.instance.buy(fileMD5, brokerAddress, {from: account, value: value}).then(function(result) {
+    //   self.printOutput("购买资源", result);
+    // }).catch(function(e) {
+    //   console.log(e);
+    //   self.setStatus("Error buy; see log.");
+    // });
   },
 
   // 以下接口供天姬调用
@@ -242,10 +248,10 @@ window.App = {
   /**
    * 上架资源
    */
-  putOnSale: function (md5, price) {
+  putOnSale: function (zMD5, price, gMD5, fileMD5s, zUrl) {
     return new Promise((resolve, reject) => {
       price *= 10**17;
-      App.instance.sale(md5, price, {from: account}).then(function (res) {
+      App.instance.sale(zMD5, price, gMD5, fileMD5s, zUrl, {from: account}).then(function (res) {
         resolve({success:true, value:0});
       }).catch(e => {
         resolve({success:false, value:e});
