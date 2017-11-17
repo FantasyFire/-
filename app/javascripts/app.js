@@ -16,7 +16,7 @@ var TJIPContract = contract(tjipcontract_artifacts);
 // var TJIPContractAddress_rinkeby = "0x385f1d491b3bf2dffa3d1f16710403c9f4e0f1fa";
 
 // 这个是更改为资源组逻辑后的合约地址
-var TJIPContractAddress_rinkeby = "0x47e558f88068d2d0e70b38915f31257b7eb3bdc2";
+var TJIPContractAddress_rinkeby = "0xf7d4d22fc8390cfae0207675004a925c093ab64b";
 
 // The following code is simple to show off interacting with your contracts.
 // As your needs grow you will likely need to change its form and structure.
@@ -54,9 +54,10 @@ window.App = {
       // self.refreshBalance();
     });
 
-    TJIPContract.at(TJIPContractAddress_rinkeby).then(function(instance) {
-      self.instance = instance;
-    });
+    self.instance = TJIPContract.at(TJIPContractAddress_rinkeby);
+    // .then(function(instance) {
+    //   self.instance = instance;
+    // });
   },
 
   setStatus: function (message) {
@@ -252,6 +253,20 @@ window.App = {
     return new Promise((resolve, reject) => {
       price *= 10**17;
       App.instance.sale(zMD5, price, gMD5, fileMD5s, zUrl, {from: account}).then(function (res) {
+        resolve({success:true, value:0});
+      }).catch(e => {
+        resolve({success:false, value:e});
+      });
+    });
+  },
+
+  /**
+   * 购买资源组
+   */
+  buyResGroup: function (zMD5, brokerAddress, price) {
+    return new Promise((resolve, reject) => {
+      price *= 10**17;
+      App.instance.buy(zMD5, brokerAddress, {from: account, value: price}).then(function (res) {
         resolve({success:true, value:0});
       }).catch(e => {
         resolve({success:false, value:e});
