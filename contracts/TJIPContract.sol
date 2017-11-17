@@ -18,7 +18,7 @@ contract TJIPContract {
         bytes32 fileMD5;
         address originatorAddress;
         uint basePrice;
-        uint profitRatio;
+        uint profitRatio; // 加入资源组后，该值实际上已弃用
         address[] brokers; // 这里用结构体存放贩卖结构好，还是只存一个地址数组好？数组能否为动态数组？
     }
     // 资源组结构体
@@ -53,6 +53,8 @@ contract TJIPContract {
     // event ShowBrokerInfo(bytes32[] fileMD5, uint[] price, address[] originatorAddress, uint[] basePrice, uint[] profitRatio);
     // 用于返回原创者的原创资源信息列表
     // event ShowOriginatorInfo(bytes32[] fileMD5, uint[] basePrice, uint[] profitRatio); // , address[][] brokers
+    // 购买资源组成功，返回下载链接以及解压密码等信息
+    event BuySuccess(bytes32 zMD5, string zUrl, bytes32 gMD5);
     
     // 自定义modifier
     modifier onlyTJUser() {
@@ -105,25 +107,23 @@ contract TJIPContract {
 
     // 查阅某人上传的资源信息
     function queryBroker(address brokerAddress) public constant onlyTJUser returns(
-        bytes32[] fileMD5, // 这些都是memory数组，memory数组只能在初始化时指定大小，以后不能再改变。这意味着不能使用push方法
+        bytes32[] zMD5, // 这些都是memory数组，memory数组只能在初始化时指定大小，以后不能再改变。这意味着不能使用push方法
         uint[] price,
-        address[] originatorAddress,
-        uint[] basePrice,
-        uint[] profitRatio)
+        address[] originatorAddress)
     {
         Sale[] storage saleArray = sales[brokerAddress];
-        fileMD5 = new bytes32[](saleArray.length);
+        zMD5 = new bytes32[](saleArray.length);
         price = new uint[](saleArray.length);
         originatorAddress = new address[](saleArray.length);
-        basePrice = new uint[](saleArray.length);
-        profitRatio = new uint[](saleArray.length);
+        // basePrice = new uint[](saleArray.length);
+        // profitRatio = new uint[](saleArray.length);
         for (uint i = 0; i < saleArray.length; i++) {
             Sale storage _sale = saleArray[i];
-            fileMD5[i] = _sale.fileMD5;
+            zMD5[i] = _sale.zMD5;
             price[i] = _sale.price;
-            Resource storage res = resources[_sale.fileMD5];
-            basePrice[i] = res.basePrice;
-            profitRatio[i] = res.profitRatio;
+            // Resource storage res = resources[_sale.fileMD5];
+            // basePrice[i] = res.basePrice;
+            // profitRatio[i] = res.profitRatio;
         }
         // ShowBrokerInfo(fileMD5, price, originatorAddress, basePrice, profitRatio);
     }
@@ -190,17 +190,24 @@ contract TJIPContract {
     }
 
     // 上传方接口
-    function sale(bytes32 fileMD5, uint price) public onlyBroker {
-        Resource storage res = resources[fileMD5];
-        if (res.fileMD5 == 0) { // 若未有该资源，则初始化一个
-            res.fileMD5 = fileMD5;
+    function sale(bytes32 zMD5, uint price, bytes32 gMD5, bytes32[] fileMD5s, string zUrl) public onlyBroker {
+        // Resource storage res = resources[fileMD5];
+        ResGroup storage resGroup = resGroups[zMD5];
+        if (resGroup.zMD5 == 0) { // 若未有该资源，则初始化一个
+            resGroup.zMD5 = zMD5;
         }
-        require(price >= res.basePrice); // 售价需不小于基础价
+        uint i = 0;
+        uint totalBasePrice = 0; // 统计总基价
+        for (i = 0; i < resGroup.fileMD5s.length; i++) {
+            Resource storage res = resources[resGroup.fileMD5s[i]];
+            totalBasePrice += res.basePrice;
+        }
+        require(price >= totalBasePrice); // 售价需不小于总基价
         // 尝试查找是否已有上传信息
         Sale[] storage mySales = sales[msg.sender];
         bool exist = false;
-        for (uint i = 0; i < mySales.length; i++) {
-            if (mySales[i].fileMD5 == fileMD5) {
+        for (i = 0; i < mySales.length; i++) {
+            if (mySales[i].zMD5 == zMD5) {
                 exist = true;
                 break;
             }
@@ -210,7 +217,7 @@ contract TJIPContract {
         } else {
             mySales.push(Sale({
                 brokerAddress: msg.sender,
-                fileMD5: fileMD5,
+                zMD5: zMD5,
                 price: price
             }));
             res.brokers.push(msg.sender);
@@ -218,22 +225,33 @@ contract TJIPContract {
     }
 
     // 购买方接口
-    function buy(bytes32 fileMD5, address brokerAddress) public onlyTJUser payable {
+    function buy(bytes32 zMD5, address brokerAddress) public onlyTJUser payable {
         Sale storage _sale;
         Sale[] storage brokerSales = sales[brokerAddress];
-        for (uint i = 0; i < brokerSales.length; i++) { // 尝试找到贩卖信息
-            if (brokerSales[i].fileMD5 == fileMD5) {
+        uint i = 0;
+        for (i = 0; i < brokerSales.length; i++) { // 尝试找到贩卖信息
+            if (brokerSales[i].zMD5 == zMD5) {
                 _sale = brokerSales[i];
                 break;
             }
         }
-        require(_sale.fileMD5!=0 && msg.value>=_sale.price); // 保证贩卖信息存在且买家给够了钱，如果给多了钱怎么处理？
-        Resource storage res = resources[fileMD5];
-        if (res.originatorAddress == 0) {
-            _sale.brokerAddress.transfer(_sale.price);
-        } else {
-            res.originatorAddress.transfer(res.basePrice + (_sale.price-res.basePrice)*res.profitRatio/100);
-            _sale.brokerAddress.transfer((_sale.price-res.basePrice)*(100-res.profitRatio)/100);
+        require(_sale.zMD5!=0 && msg.value>=_sale.price); // 保证贩卖信息存在且买家给够了钱，如果给多了钱怎么处理？
+        ResGroup storage resGroup = resGroups[zMD5]; // 获取资源组，逐一转账
+        uint profit = _sale.price;
+        for (i = 0; i < resGroup.fileMD5s.length; i++) {
+            Resource storage res = resources[resGroup.fileMD5s[i]];
+            if (res.originatorAddress != 0 && res.basePrice > 0) {
+                res.originatorAddress.transfer(res.basePrice);
+                profit -= res.basePrice;
+            }
+            // if (res.originatorAddress == 0) {
+            //     _sale.brokerAddress.transfer(_sale.price);
+            // } else {
+            //     res.originatorAddress.transfer(res.basePrice + (_sale.price-res.basePrice)*res.profitRatio/100);
+            //     _sale.brokerAddress.transfer((_sale.price-res.basePrice)*(100-res.profitRatio)/100);
+            // }
         }
+        _sale.brokerAddress.transfer(profit);
+        BuySuccess(resGroup.zMD5, resGroup.zUrl, resGroup.gMD5);
     }
 }
