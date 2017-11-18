@@ -265,6 +265,11 @@ window.App = {
    */
   buyResGroup: function (zMD5, brokerAddress, price) {
     return new Promise((resolve, reject) => {
+      // 开始购买前，监听BuySuccess事件
+      var buySuccess = App.instance.BuySuccess();
+      buySuccess.watch(function (error, result) {
+        console.log('$1 $2', error, result);
+      });
       price *= 10**17;
       App.instance.buy(zMD5, brokerAddress, {from: account, value: price}).then(function (res) {
         resolve({success:true, value:0});
